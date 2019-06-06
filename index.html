@@ -1,0 +1,83 @@
+
+  <div ng-app="hearthApp" ng-controller="hearthCtrl">
+    
+    <nav class="navbar fixed-top navbar-toggleable-md navbar-light bg-faded navbg">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    &#9776;
+  </button>
+  <a class="navbar-brand" href="#"><input class="form-control mr-sm-2 text-center  hidden-lg-up" type="text" placeholder="Search" ng-model="search"></a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item neutral" ng-click="pclass('Neutral')"><div class="hidden-xl-up hidden-md-down"><img src="http://metastats.net/images/class/neutral.png" height=50 width=50 class="iconimg"></div><div class="txtDiv"><a href="#" class="nav-link">Neutral</a></div></li>
+      <li class="nav-item druid" ng-click="pclass('Druid')"><div class="hidden-xl-up hidden-md-down"><img src="http://www.hearthstonedecklists.com/wp-content/uploads/2014/03/icon_class_druid-125x125.png" height=50 width=50 class="iconimg"></div><div class="txtDiv"><a href="#" class="nav-link">Druid</a></div></li>
+      <li class="nav-item hunter" ng-click="pclass('Hunter')"><div class="hidden-xl-up hidden-md-down"><img src="http://www.hearthstonedecklists.com/wp-content/uploads/2014/03/icon_class_hunter-125x125.png" height=50 width=50 class="iconimg"></div><div class="txtDiv"><a href="#" class="nav-link">Hunter</a></div></li>
+      <li class="nav-item mage" ng-click="pclass('Mage')"><div class="hidden-xl-up hidden-md-down"><img src="http://www.hearthstonedecklists.com/wp-content/uploads/2014/03/icon_class_mage-125x125.png" height=50 width=50 class="iconimg"></div><div class="txtDiv"><a href="#" class="nav-link">Mage</a></div></li>
+      <li class="nav-item rogue" ng-click="pclass('Rogue')"><div class="hidden-xl-up hidden-md-down"><img src="http://www.hearthstonedecklists.com/wp-content/uploads/2014/03/icon_class_rogue-125x125.png" height=50 width=50 class="iconimg"></div><div class="txtDiv"><a href="#" class="nav-link">Rogue</a></div></li>
+      <li class="nav-item paladin" ng-click="pclass('Paladin')"><div class="hidden-xl-up hidden-md-down"><img src="http://www.hearthstonedecklists.com/wp-content/uploads/2014/03/icon_class_paladin-125x125.png" height=50 width=50 class="iconimg"></div><div class="txtDiv"><a href="#" class="nav-link">Paladin</a></div></li>
+      <li class="nav-item priest" ng-click="pclass('Priest')"><div class="hidden-xl-up hidden-md-down"><img src="http://www.hearthstonedecklists.com/wp-content/uploads/2014/03/icon_class_priest-125x125.png" height=50 width=50 class="iconimg"></div><div class="txtDiv"><a href="#" class="nav-link">Priest</a></div></li>
+      <li class="nav-item shaman" ng-click="pclass('Shaman')"><div class="hidden-xl-up hidden-md-down"><img src="http://www.hearthstonedecklists.com/wp-content/uploads/2014/03/icon_class_shaman-125x125.png" height=50 width=50 class="iconimg"></div><div class="txtDiv"><a href="#" class="nav-link">Shaman</a></div></li>
+      <li class="nav-item warrior" ng-click="pclass('Warrior')"><div class="hidden-xl-up hidden-md-down"><img src="http://www.hearthstonedecklists.com/wp-content/uploads/2014/03/icon_class_warrior-125x125.png" height=50 width=50 class="iconimg"></div><div class="txtDiv"><a href="#" class="nav-link">Warrior</a></div></li>
+      <li class="nav-item warlock" ng-click="pclass('Warlock')"><div class="hidden-xl-up hidden-md-down"><img src="http://www.hearthstonedecklists.com/wp-content/uploads/2014/03/icon_class_warlock-125x125.png" height=50 width=50 class="iconimg"></div><div class="txtDiv"><a href="#" class="nav-link">Warlock</a></div></li>      
+      <li class="nav-item"><input class="form-control mr-sm-2 text-center  hidden-md-down" type="text" placeholder="Search" ng-model="search"></li>
+      
+    
+      
+    </ul>
+  </form>
+  </div>
+</nav>
+    
+ 
+   
+    
+      <div class="container content">        
+        <h1>{{playerClass}}</h1>
+        
+   
+    <div class="row">
+  <div ng-repeat="i in info | filter:{ playerClass: playerClass } | filter:{ name: search } | filter: { type: '!Hero' }" class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-centered">
+  
+        <div class="singleContainer" data-toggle="modal" data-target=".{{i.id}}"><div class="imgbox" style="background-image: url(http://media.services.zam.com/v1/media/byName/hs/cards/enus/{{i.id}}.png)"></div>
+          <div class="txtbox"><h4>{{i.name}}</h4></div>
+          </div>
+    
+    <div class="modal fade {{i.id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content"><div class="row">
+      <div class="col-lg-6 cardImg hidden-md-down"><img src="http://media.services.zam.com/v1/media/byName/hs/cards/enus/{{i.id}}.png"></div>
+      
+      <div class="col-lg-6 col-md-12 cardTitle"><h3>{{i.name}}</h3>
+        TYPE: {{i.type}}<Br>
+        RARITY: {{i.rarity}}<br>
+        TEXT: <span ng-bind-html="i.text"></span>
+       </div>
+      
+      </div>
+      
+      
+      
+    </div>
+  </div>
+</div>
+    
+
+  
+    
+    </div>
+      
+        </div>
+
+
+        
+
+  
+   
+    
+</div>
+    
+    
+    
+    
+
+      
