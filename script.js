@@ -6,11 +6,11 @@ angular.module('hearthApp', [ 'ngSanitize'])
   
 
  
-  $scope.playerClass = "Shaman";
+  $scope.cardClass = "Shaman";
   
   $scope.pclass = function(input){
     
-    $scope.playerClass = input;
+    $scope.cardClass = input;
     $scope.apply();
     
   };
